@@ -1,7 +1,0 @@
-  # templates 폴더 안에 있는 여러 K8S 리소스들이 참조할 수 있는 공용값 설정.
-  replicaCount: 1
-  image: 216989126830.dkr.ecr.ap-northeast-2.amazonaws.com/qna-service:1.0
-  port: 8033
-
-  env:
-    SPRING_PROFILES_ACTIVE: default

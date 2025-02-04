@@ -1,6 +1,0 @@
-apiVersion: v2
-name: review-service
-description: helm chart for review-service in the Spring Cloud MSA
-type: application
-version: 1.0.0
-appVersion: 1.0.0
