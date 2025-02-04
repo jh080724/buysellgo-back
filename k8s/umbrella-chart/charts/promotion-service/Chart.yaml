@@ -1,0 +1,6 @@
+apiVersion: v2
+name: promotion-service
+description: helm chart for promotion-service in the Spring Cloud MSA
+type: application
+version: 1.0.0
+appVersion: 1.0.0

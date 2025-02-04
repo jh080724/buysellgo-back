@@ -1,0 +1,6 @@
+apiVersion: v2
+name: qna-service
+description: helm chart for qna-service in the Spring Cloud MSA
+type: application
+version: 1.0.0
+appVersion: 1.0.0

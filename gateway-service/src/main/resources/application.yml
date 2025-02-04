@@ -11,8 +11,8 @@ spring:
         cors-configurations:
           '[/**]': # 모든 경로에 대해 CORS 설정
             allowed-origins:
-              - 'http://localhost:3000' # 허용할 도메인 추가
-            #               - "https://buysellgo.shop" # 필요시 추가
+              - "https://buysellgo.shop" # 필요시 추가
+#              - 'http://localhost:3000' # 허용할 도메인 추가
             allowed-methods:
               - GET # 허용할 HTTP 메서드
               - POST
@@ -37,13 +37,13 @@ spring:
       routes:
         # user-service
         - id: user-service-api-docs
-          uri: lb://USER-SERVICE # 로드 밸런서 URI
+          uri: http://user-service.default.svc.cluster.local:8030
           predicates:
             - Path=/user-service/v3/api-docs # 경로 조건
             - Method=GET # 메서드 조건
 
         - id: user-service
-          uri: lb://USER-SERVICE
+          uri: http://user-service.default.svc.cluster.local:8030
           predicates:
             - Path=/user-service/** # 경로 조건
           filters:
@@ -52,7 +52,7 @@ spring:
             - AuthorizationHeaderFilter # 인증 헤더 필터 적용
 
         - id: user-service
-          uri: lb://USER-SERVICE
+          uri: http://user-service.default.svc.cluster.local:8030
           predicates:
             - Path=/user-service/actuator/**
           filters:
@@ -61,13 +61,13 @@ spring:
 
         # helpdesk-service
         - id: helpdesk-service-api-docs
-          uri: lb://HELPDESK-SERVICE
+          uri: http://helpdesk-service.default.svc.cluster.local:8020
           predicates:
             - Path=/helpdesk-service/v3/api-docs
             - Method=GET
 
         - id: helpdesk-service
-          uri: lb://HELPDESK-SERVICE
+          uri: http://helpdesk-service.default.svc.cluster.local:8020
           predicates:
             - Path=/helpdesk-service/**
           filters:
@@ -76,7 +76,7 @@ spring:
             - AuthorizationHeaderFilter
 
         - id: helpdesk-service
-          uri: lb://HELPDESK-SERVICE
+          uri: http://helpdesk-service.default.svc.cluster.local:8020
           predicates:
             - Path=/helpdesk-service/actuator/**
           filters:
@@ -85,13 +85,13 @@ spring:
 
         # promotion-service
         - id: promotion-service-api-docs
-          uri: lb://PROMOTION-SERVICE
+          uri: http://promotion-service.default.svc.cluster.local:8021
           predicates:
             - Path=/promotion-service/v3/api-docs
             - Method=GET
 
         - id: promotion-service
-          uri: lb://PROMOTION-SERVICE
+          uri: http://promotion-service.default.svc.cluster.local:8021
           predicates:
             - Path=/promotion-service/**
           filters:
@@ -100,7 +100,7 @@ spring:
             - AuthorizationHeaderFilter
 
         - id: promotion-service
-          uri: lb://PROMOTION-SERVICE
+          uri: http://promotion-service.default.svc.cluster.local:8021
           predicates:
             - Path=/promotion-service/actuator/**
           filters:
@@ -109,13 +109,13 @@ spring:
 
         # statistics-service
         - id: statistics-service-api-docs
-          uri: lb://STATISTICS-SERVICE
+          uri: http://statistics-service.default.svc.cluster.local:8022
           predicates:
             - Path=/statistics-service/v3/api-docs
             - Method=GET
 
         - id: statistics-service
-          uri: lb://STATISTICS-SERVICE
+          uri: http://statistics-service.default.svc.cluster.local:8022
           predicates:
             - Path=/statistics-service/**
           filters:
@@ -124,7 +124,7 @@ spring:
             - AuthorizationHeaderFilter
 
         - id: statistics-service
-          uri: lb://STATISTICS-SERVICE
+          uri: http://statistics-service.default.svc.cluster.local:8022
           predicates:
             - Path=/statistics-service/actuator/**
           filters:
@@ -133,13 +133,13 @@ spring:
 
         # delivery-service
         - id: delivery-service-api-docs
-          uri: lb://DELIVERY-SERVICE
+          uri: http://delivery-service.default.svc.cluster.local:8023
           predicates:
             - Path=/delivery-service/v3/api-docs
             - Method=GET
 
         - id: delivery-service
-          uri: lb://DELIVERY-SERVICE
+          uri:  http://delivery-service.default.svc.cluster.local:8023
           predicates:
             - Path=/delivery-service/**
           filters:
@@ -148,7 +148,7 @@ spring:
             - AuthorizationHeaderFilter
 
         - id: delivery-service
-          uri: lb://DELIVERY-SERVICE
+          uri:  http://delivery-service.default.svc.cluster.local:8023
           predicates:
             - Path=/delivery-service/actuator/**
           filters:
@@ -157,13 +157,13 @@ spring:
 
         # chat-service
         - id: chat-service-api-docs
-          uri: lb://CHAT-SERVICE
+          uri:  http://chat-service.default.svc.cluster.local:8034
           predicates:
             - Path=/chat-service/v3/api-docs
             - Method=GET
 
         - id: chat-service
-          uri: lb://CHAT-SERVICE
+          uri: http://chat-service.default.svc.cluster.local:8034
           predicates:
             - Path=/chat-service/ws/info** # 경로 조건
           filters:
@@ -171,7 +171,7 @@ spring:
             - RewritePath=/chat-service/(?<segment>.*), /$\{segment} # 경로 재작성
 
         - id: chat-service
-          uri: lb://CHAT-SERVICE
+          uri: http://chat-service.default.svc.cluster.local:8034
           predicates:
             - Path=/chat-service/chat/** # 경로 조건
           filters:
@@ -179,7 +179,7 @@ spring:
             - RewritePath=/chat-service/(?<segment>.*), /$\{segment} # 경로 재작성
 
         - id: chat-service
-          uri: lb://CHAT-SERVICE
+          uri: http://chat-service.default.svc.cluster.local:8034
           predicates:
             - Path=/chat-service/** # 경로 조건
           filters:
@@ -187,7 +187,7 @@ spring:
             - RewritePath=/chat-service/(?<segment>.*), /$\{segment} # 경로 재작성
 
         - id: chat-service
-          uri: lb://CHAT-SERVICE
+          uri: http://chat-service.default.svc.cluster.local:8034
           predicates:
             - Path=/chat-service/actuator/**
           filters:
@@ -195,13 +195,13 @@ spring:
 
         # review-service
         - id: review-service-api-docs
-          uri: lb://REVIEW-SERVICE
+          uri: http://review-service.default.svc.cluster.local:8031
           predicates:
             - Path=/review-service/v3/api-docs
             - Method=GET
 
         - id: review-service
-          uri: lb://REVIEW-SERVICE
+          uri: http://review-service.default.svc.cluster.local:8031
           predicates:
             - Path=/review-service/**
           filters:
@@ -210,7 +210,7 @@ spring:
             - AuthorizationHeaderFilter
 
         - id: review-service
-          uri: lb://REVIEW-SERVICE
+          uri: http://review-service.default.svc.cluster.local:8031
           predicates:
             - Path=/review-service/actuator/**
           filters:
@@ -219,13 +219,13 @@ spring:
 
         # qna-service
         - id: qna-service-api-docs
-          uri: lb://QNA-SERVICE
+          uri: http://qna-service.default.svc.cluster.local:8033
           predicates:
             - Path=/qna-service/v3/api-docs
             - Method=GET
 
         - id: qna-service
-          uri: lb://QNA-SERVICE
+          uri: http://qna-service.default.svc.cluster.local:8033
           predicates:
             - Path=/qna-service/**
           filters:
@@ -234,7 +234,7 @@ spring:
             - AuthorizationHeaderFilter
 
         - id: qna-service
-          uri: lb://QNA-SERVICE
+          uri: http://qna-service.default.svc.cluster.local:8033
           predicates:
             - Path=/qna-service/actuator/**
           filters:
@@ -243,13 +243,13 @@ spring:
 
         # order-service
         - id: order-service-api-docs
-          uri: lb://ORDER-SERVICE
+          uri: http://order-service.default.svc.cluster.local:8010
           predicates:
             - Path=/order-service/v3/api-docs
             - Method=GET
 
         - id: order-service
-          uri: lb://ORDER-SERVICE
+          uri: http://order-service.default.svc.cluster.local:8010
           predicates:
             - Path=/order-service/**
           filters:
@@ -258,7 +258,7 @@ spring:
             - AuthorizationHeaderFilter
 
         - id: order-service
-          uri: lb://ORDER-SERVICE
+          uri: http://order-service.default.svc.cluster.local:8010
           predicates:
             - Path=/order-service/actuator/**
           filters:
@@ -267,13 +267,13 @@ spring:
 
         # product-service
         - id: product-service-api-docs
-          uri: lb://PRODUCT-SERVICE
+          uri: http://product-service.default.svc.cluster.local:8012
           predicates:
             - Path=/product-service/v3/api-docs
             - Method=GET
 
         - id: product-service
-          uri: lb://PRODUCT-SERVICE
+          uri: http://product-service.default.svc.cluster.local:8012
           predicates:
             - Path=/product-service/**
           filters:
@@ -282,7 +282,7 @@ spring:
             - AuthorizationHeaderFilter
 
         - id: product-service
-          uri: lb://PRODUCT-SERVICE
+          uri: http://product-service.default.svc.cluster.local:8012
           predicates:
             - Path=/product-service/actuator/**
           filters:
@@ -291,13 +291,13 @@ spring:
 
           # payment-service
         - id: payment-service-api-docs
-          uri: lb://PAYMENT-SERVICE
+          uri: http://payment-service.default.svc.cluster.local:8013
           predicates:
             - Path=/payment-service/v3/api-docs
             - Method=GET
 
         - id: payment-service
-          uri: lb://PAYMENT-SERVICE
+          uri: http://payment-service.default.svc.cluster.local:8013
           predicates:
             - Path=/payment-service/**
           filters:
@@ -306,7 +306,7 @@ spring:
             - AuthorizationHeaderFilter
 
         - id: payment-service
-          uri: lb://PAYMENT-SERVICE
+          uri: http://payment-service.default.svc.cluster.local:8013
           predicates:
             - Path=/payment-service/actuator/**
           filters:
@@ -315,13 +315,13 @@ spring:
 
           # search-service
         - id: search-service-api-docs
-          uri: lb://SEARCH-SERVICE
+          uri: http://search-service.default.svc.cluster.local:8032
           predicates:
             - Path=/search-service/v3/api-docs
             - Method=GET
 
         - id: search-service
-          uri: lb://SEARCH-SERVICE
+          uri: http://search-service.default.svc.cluster.local:8032
           predicates:
             - Path=/search-service/**
           filters:
@@ -330,77 +330,14 @@ spring:
             - AuthorizationHeaderFilter
 
         - id: search-service
-          uri: lb://SEARCH-SERVICE
+          uri: http://search-service.default.svc.cluster.local:8032
           predicates:
             - Path=/search-service/actuator/**
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/search-service/(?<segment>.*), /$\{segment}
 
-#        - id: openapi-proxy
-#          uri: http://localhost:8000
-#          predicates:
-#          - Path=/demo-microservices/v3/api-docs/**
-#          filters:
-#          - RewritePath=/demo-microservices/v3/api-docs/(?<path>.*), /demo-microservices/$\{path}/v3/api-docs
 
-#        - id: openapi
-#          uri: http://localhost:${server.port}
-#          predicates:
-#            - Path=/v3/api-docs/**
-#          filters:
-#            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
-#
-#        - id: main-service
-#          uri: lb://MAIN-SERVICE
-#          predicates:
-#            - Path=/main-service/**
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/main-service/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
-#
-#        - id: main-service
-#          uri: lb://MAIN-SERVICE
-#          predicates:
-#            - Path=/main-service/actuator/**
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-#
-#        - id: mypage-service
-#          uri: lb://MYPAGE-SERVICE
-#          predicates:
-#            - Path=/mypage-service/**
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/mypage-service/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
-#
-#        - id: mypage-service
-#          uri: lb://MYPAGE-SERVICE
-#          predicates:
-#            - Path=/mypage-service/actuator/**
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-#
-#        - id: travelboard-service
-#          uri: lb://TRAVELBOARD-SERVICE
-#          predicates:
-#            - Path=/travelboard-service/**
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/travelboard-service/(?<segment>.*), /$\{segment}
-#            - AuthorizationHeaderFilter
-#
-#        - id: travelboard-service
-#          uri: lb://TRAVELBOARD-SERVICE
-#          predicates:
-#            - Path=/travelboard-service/actuator/**
-#          filters:
-#            - RemoveRequestHeader=Cookie
-#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
 # log level setting
 logging:
   level:

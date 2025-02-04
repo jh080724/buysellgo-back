@@ -1,0 +1,41 @@
+apiVersion: apps/v1 # 오브젝트 정의에 사용할 k8s API 버전. v1이 가장 안정화 된 버전.
+kind: Deployment    # 리소스 타입
+metadata:
+  name: qna-service  # 생성하려는 서비스 이름.
+  labels:
+    app: qna-service # 다른 오브젝트에서 이 Deployment를 참조할 때 사용하는 라벨
+  annotations:
+    # Helm에게 특정 동작을 지시하고 싶을 때 사용하는 데이터 명시
+    "helm.sh/hook": pre-install, post-install # Helm이 이 deployment를 설치하는 타이밍을 지정
+    "helm.sh/hook-weight": "-5" # 상대값을 이용헤서, 다른 리소스보다 먼저/나중에 실행되도록 조정, RabbitMQ보다 늦게 실행
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: qna-service # 이 Deployment 가 관리할 pod를 선택하는 기준
+  template:
+    metadata:
+      labels:
+        app: qna-service # pod에 부여할 Label
+    spec: # pod에 대한 spec을 지정
+      imagePullSecrets:
+        {{- if $.Values.imagePullSecrets }}
+        {{- range $.Values.imagePullSecrets }}
+        - name: {{ . | quote }}
+        {{- end }}
+        {{- end }}
+
+      containers:
+        - name: qna-service
+          image: {{ .Values.image }}
+          imagePullPolicy: {{ $.Values.global.imagePullPolicy }}  # $를 붙여서 umbrella-chart에 있는 전역 설정값을 지정하는 의미
+          ports:
+            - containerPort: {{ .Values.port }}
+          env:
+            - name: SPRING_PROFILE_ACTIVE
+              value: {{ .Values.env.SPRING_PROFILES_ACTIVE }}
+            - name: GIT_PRIVATE_KEY
+              valueFrom: # 클러스터 내에 secret 오브젝트로 적용해서 사용한다.
+                secretKeyRef:
+                  name: git-private-key # 시크릿 오브젝트의 이름
+                  key: GIT_PRIVATE_KEY  # 시크릿이 가지고 있는 값

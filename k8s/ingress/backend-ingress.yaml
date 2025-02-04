@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod # ClusterIssuer 참조
+    nginx.ingress.kubenetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - api.buysellgo.shop
+      secretName: api-buysellgo-tls  # cert-manager가 생성한 인증서 정보를 끌고와서 활용.
+  rules:
+    - host: api.buysellgo.shop
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-deployment
+                port:
+                  number: 80

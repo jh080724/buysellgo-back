@@ -1,0 +1,74 @@
+apiVersion: v2
+name: umbrella-chart
+description: Umbrella chart for deploying all services in the Spring Cloud MSA
+type: application
+version: 1.0.0
+appVersion: 1.0.0
+
+#  // 1.회원서비스(user-srevice)
+#  // 2.상품서비스(product-service)
+#  // 3.장바구니서비스(cart-service)
+#  // 4.주문서비스(order-service)
+#  // 5.리뷰서비스(review-service)
+#  // 6.Q&A서비스(qna-service)
+#  // 7.고객센터서비스(helpdesk-service) <
+#  // 8.검색서비스(search-service)
+#  // 9.결제서비스(payment-service)
+#  // 10.배송서비스(delivery-service) <
+#  // 11.프로모션(promotion-service) <
+#  // 12.채팅서비스(chat-service)
+#  // 13.통계서비스(statistics-service) <
+
+# Umbrella Chart의 하위 차트를 정의.(상위 차트 install할때 의존성 있는 나머지들도 함께 install 되도록)
+dependencies:
+  - name: rabbitmq
+    version: 1.0.0
+    repository: file://charts/rabbitmq
+  - name: kafka
+    version: 1.0.0
+    repository: file://charts/kafka
+  - name: config-service    #1: 8888
+    version: 1.0.0
+    repository: file://charts/config-service
+  - name: user-service      #2: 8030
+    version: 1.0.0
+    repository: file://charts/user-service
+  - name: order-service     #3: 8010
+    version: 1.0.0
+    repository: file://charts/order-service
+  - name: product-service   #4: 8012
+    version: 1.0.0
+    repository: file://charts/product-service
+  - name: payment-service   #5: 8013
+    version: 1.0.0
+    repository: file://charts/payment-service
+  - name: cart-service      #6: 8014
+    version: 1.0.0
+    repository: file://charts/cart-service
+  - name: review-service    #7: 8031
+    version: 1.0.0
+    repository: file://charts/review-service
+  - name: qna-service       #8: 8033
+    version: 1.0.0
+    repository: file://charts/qna-service
+  - name: search-service    #9: 8032
+    version: 1.0.0
+    repository: file://charts/search-service
+  - name: helpdesk-service  #10: 8020
+    version: 1.0.0
+    repository: file://charts/helpdesk-service
+  - name: promotion-service  #11: 8021
+    version: 1.0.0
+    repository: file://charts/promotion-service
+  - name: statistics-service  #12: 8022
+    version: 1.0.0
+    repository: file://charts/statistics-service
+  - name: delivery-service  #13: 8023
+    version: 1.0.0
+    repository: file://charts/delivery-service
+  - name: chat-service  #14: 8034
+    version: 1.0.0
+    repository: file://charts/chat-service
+  - name: gateway-service     #15: 8000
+    version: 1.0.0
+    repository: file://charts/gateway-service
