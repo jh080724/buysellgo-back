@@ -142,7 +142,7 @@ pipeline {
 
                             def changedServices = env.CHANGED_SERVICES.split(",")
                             changedServices.each { service ->
-                                def newTag = "1.0.5 // 이미지 빌드할 때 사용한 태그를 동일하게 사용.
+                                def newTag = "1.0.5" // 이미지 빌드할 때 사용한 태그를 동일하게 사용.
 
                                 // umbrella-chart/charts/<service>/values.yaml 파일 내의 image 태그 교체.
                                 // sed: 스트림 편집기(stream editor), 텍스트 파일을 수정하는 데 사용.
