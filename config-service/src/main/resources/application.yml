@@ -2,8 +2,8 @@ server:
   port: 8888
 
 spring:
-#  profiles:
-#    active: git
+  profiles:
+    active: default
 
   application:
     name: config-service
