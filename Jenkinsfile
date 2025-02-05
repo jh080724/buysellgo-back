@@ -149,7 +149,7 @@ pipeline {
                                 // s#^ -> 라인의 시작을 의미. image: -> 텍스트 image:을 찾아라, .* -> image: 다음에 오는 모든 문자
                                 // 새로운 태그를 붙인 ecr 경로로 수정을 진행해라
                                 sh """
-                                    cd /var/jenkins_home/workspace/buysellgo-back-kubenetes
+                                    cd /var/jenkins_home/workspace/buysellgo-back-k8s
                                     ls -a
                                     echo "Updating ${service} image tag in k8s repo...."
                                     sed -i 's#^image: .*#image: ${ECR_URL}/${service}:${newTag}#' ./umbrella-chart/charts/${service}/values.yaml
@@ -159,7 +159,7 @@ pipeline {
 
                         // 변경사항 commit & push
                         sh """
-                            cd /var/jenkins_home/workspace/buysellgo-back-kubenetes
+                            cd /var/jenkins_home/workspace/buysellgo-back-k8s
                             git config user.name "jh080724"
                             git config user.email "tsj010813@gmail.com"
                             git remote -v
@@ -169,7 +169,7 @@ pipeline {
 
                             echo "push complete."
                             cd ..
-                            rm -rf buysellgo-back-kubenetes
+                            rm -rf buysellgo-back-k8s
                             ls -a
                         """
 
