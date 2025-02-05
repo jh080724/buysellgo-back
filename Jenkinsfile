@@ -150,6 +150,7 @@ pipeline {
                                 // 새로운 태그를 붙인 ecr 경로로 수정을 진행해라
                                 sh """
                                     cd /var/jenkins_home/workspace/buysellgo-back-k8s
+                                    pwd
                                     ls -a
                                     echo "Updating ${service} image tag in k8s repo...."
                                     sed -i 's#^image: .*#image: ${ECR_URL}/${service}:${newTag}#' ./umbrella-chart/charts/${service}/values.yaml
@@ -174,7 +175,7 @@ pipeline {
                             fi
 
                             cd ..
-                            cp buysellgo-back-k8s-bak
+                            cp buysellgo-back-k8s buysellgo-back-k8s-bak
                             rm -rf buysellgo-back-k8s
                             ls -a
                         """
