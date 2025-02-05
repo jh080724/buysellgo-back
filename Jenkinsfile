@@ -164,10 +164,15 @@ pipeline {
                             git config user.email "tsj010813@gmail.com"
                             git remote -v
                             git add .
-                            git commit -m "Update images for changed services ${env.BUILD_ID}"
-                            git push origin main
 
-                            echo "push complete."
+                            if git diff --cached --quiet; then
+                                echo "nothing to commit. skip push."
+                            else
+                                git commit -m "Update images for changed services ${env.BUILD_ID}"
+                                git push origin main
+                                echo "push successfully complete."
+                            fi
+
                             cd ..
                             rm -rf buysellgo-back-k8s
                             ls -a
