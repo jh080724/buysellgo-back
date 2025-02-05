@@ -174,6 +174,7 @@ pipeline {
                             fi
 
                             cd ..
+                            cp buysellgo-back-k8s-bak
                             rm -rf buysellgo-back-k8s
                             ls -a
                         """
