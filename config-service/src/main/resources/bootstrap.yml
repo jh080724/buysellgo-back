@@ -1,6 +1,6 @@
 spring:
   rabbitmq:
-    host: rabbitmq-service.default.svc.cluster.local
+    host: rabbitmq
     port: 5672
   cloud:
     config:
