@@ -4,6 +4,7 @@ server:
 spring:
 #  profiles:
 #    active: git
+#
 
   application:
     name: config-service
