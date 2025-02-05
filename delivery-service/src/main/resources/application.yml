@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 8023
 
 spring:
   application:
@@ -10,7 +10,7 @@ openapi:
   service:
     title: delivery-service doc
     version: v1
-    url: http://localhost:8000/${spring.application.name}
+    url: https://api.buysellgo.shop:8000/${spring.application.name}
 springdoc:
   api-docs:
     path: /delivery-service/v3/api-docs
