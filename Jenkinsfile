@@ -137,7 +137,7 @@ pipeline {
                             sh '''
                                 cd ..
                                 ls -a
-                                git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com:jh080724/buysellgo-back-k8s.git
+                                git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/jh080724/buysellgo-back-k8s.git
                             '''
 
                             def changedServices = env.CHANGED_SERVICES.split(",")
@@ -169,7 +169,7 @@ pipeline {
 
                             echo "push complete."
                             cd ..
-                            rm -rf orderservice-kubenetes
+                            rm -rf buysellgo-back-kubenetes
                             ls -a
                         """
 
