@@ -152,7 +152,7 @@ pipeline {
                                     cd /var/jenkins_home/workspace/buysellgo-back-k8s/umbrella-chart/charts/${service}
                                     ls -a
                                     echo "Updating ${service} image tag in k8s repo...."
-                                    sed -i 's#^image: .*#image: ${ECR_URL}/${service}:${newTag}#' .values.yaml
+                                    sed -i 's#^image: .*#image: ${ECR_URL}/${service}:${newTag}#' ./values.yaml
                                 """
                             }
 
