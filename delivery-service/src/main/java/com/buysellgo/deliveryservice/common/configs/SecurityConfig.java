@@ -50,7 +50,7 @@ public class SecurityConfig {
                     auth
 //                    .requestMatchers("/user/list").hasAnyRole("ADMIN")
                             .requestMatchers(
-                                    "/api/v1/hello-statistics-service",
+                                    "/api/v1/hello-delivery-service",
                                     "/sign-up",
                                     "/sign-in",
                                     "/refresh",
@@ -62,12 +62,12 @@ public class SecurityConfig {
 //                            "/webjars/**",
 //                            "/swagger-ui.html",
 //                            "/swagger-ui-custom.html"
-                                    "/statistics-service/v3/api-docs/**",
-                                    "/statistics-service/swagger-ui/**",
-                                    "/statistics-service/swagger-resources/**",
-                                    "/statistics-service/webjars/**",
-                                    "/statistics-service/swagger-ui.html",
-                                    "/statistics-service/swagger-ui-custom.html"
+                                    "/delivery-service/v3/api-docs/**",
+                                    "/delivery-service/swagger-ui/**",
+                                    "/delivery-service/swagger-resources/**",
+                                    "/delivery-service/webjars/**",
+                                    "/delivery-service/swagger-ui.html",
+                                    "/delivery-service/swagger-ui-custom.html"
                             ).permitAll()
 //                    .requestMatchers("/**").access(
 //                            new WebExpressionAuthorizationManager("hasIpAddress('localhost') or hasIpAddress('::1') or hasIpAddress('127.0.0.1')  or hasIpAddress('172.30.67.125')")

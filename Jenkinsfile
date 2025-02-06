@@ -28,7 +28,7 @@ pipeline {
 //         K8S_REPO_URL = "https://github.com/BuySellGo/buysellgo-back.git"
         K8S_REPO_URL = "https://github.com/jh080724/buysellgo-back-k8s.git"
         K8S_REPO_CRED = "github-k8s-repo-token"
-        NEW_TAG = "1.0.0"
+        NEW_TAG = "1.0.1"
     }
 
     stages {
