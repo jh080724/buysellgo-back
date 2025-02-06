@@ -10,7 +10,7 @@ openapi:
   service:
     title: helpdesk-service doc
     version: v1
-    url: https://api.buysellgo.shop:8000/${spring.application.name}
+    url: http://gateway-service.default.svc.cluster.local:8000/${spring.application.name}
 springdoc:
   api-docs:
     path: /helpdesk-service/v3/api-docs

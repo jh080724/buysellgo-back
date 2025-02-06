@@ -4,25 +4,16 @@ server:
 spring:
   profiles:
     active: default
-  #
   application:
     name: config-service
-
   cloud:
     config:
       server:
-#        native:
-#          search-locations: file:///Users/mspapa/final-project/buysellgo-config
-#          search-locations: file:///C:/final-project/buysellgo-config
-
         git:
           uri: https://github.com/jh080724/buysellgo-back-config.git
           default-label: main
           username: jh080724
           password: ${GIT_PRIVATE_KEY}
-#          host-key:
-#          host-key-algorithm:
-#          private-key:
 
 logging:
   level:

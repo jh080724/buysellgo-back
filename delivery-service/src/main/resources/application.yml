@@ -10,7 +10,7 @@ openapi:
   service:
     title: delivery-service doc
     version: v1
-    url: https://api.buysellgo.shop/${spring.application.name}
+    url: http://gateway-service.default.svc.cluster.local:8000/${spring.application.name}
 springdoc:
   api-docs:
     path: /delivery-service/v3/api-docs

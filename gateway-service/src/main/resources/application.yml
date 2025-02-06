@@ -337,7 +337,6 @@ spring:
             - RemoveRequestHeader=Cookie
             - RewritePath=/search-service/(?<segment>.*), /$\{segment}
 
-
 # log level setting
 logging:
   level:
