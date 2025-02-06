@@ -7,7 +7,7 @@ import com.buysellgo.paymentservice.service.dto.ServiceResult;
 import java.util.Map;
 
 
-@FeignClient(name = "order-service", url="http://order-service.default.svc.cluster.local:8010")
+@FeignClient(name = "order-service")
 public interface OrderServiceClient {
     @PutMapping("/order/status/success")
     ServiceResult<Map<String, Object>> updateOrderStatusSuccess(@RequestParam Long orderId);
