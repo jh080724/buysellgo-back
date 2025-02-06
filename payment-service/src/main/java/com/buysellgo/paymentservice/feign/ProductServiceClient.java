@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.buysellgo.paymentservice.service.dto.ServiceResult;
 import java.util.Map;
 
-@FeignClient(name = "product-service")
+@FeignClient(name = "product-service", url="http://product-service.default.svc.cluster.local:8012")
 public interface ProductServiceClient {
 
     @PutMapping("/product/quantity")
