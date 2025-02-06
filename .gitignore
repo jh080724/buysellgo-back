@@ -15,7 +15,6 @@ target/
 #application-local.yml
 #application-dev.yml
 #application-prod.yml
-*.sh
 
 .DS_Store
 

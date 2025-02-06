@@ -12,7 +12,7 @@ spring:
           '[/**]': # 모든 경로에 대해 CORS 설정
             allowed-origins:
               - "https://buysellgo.shop" # 필요시 추가
-#              - 'http://localhost:3000' # 허용할 도메인 추가
+            #              - 'http://localhost:3000' # 허용할 도메인 추가
             allowed-methods:
               - GET # 허용할 HTTP 메서드
               - POST

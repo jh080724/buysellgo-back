@@ -12,20 +12,20 @@ openapi:
     version: v1
     url: https://api.buysellgo.shop:8000/${spring.application.name}
 springdoc:
-#  default-consumes-media-type: application/json
-#  default-produces-media-type: application/json
-#  api-docs:
-#    enabled: true
-#    path: /v3/api-docs
-#  swagger-ui:
-#    enabled: true
-#    path: /swagger-ui.html
-#    config-url: /v3/api-docs/swagger-config
-#    urls:
-#      - url: /v3/api-docs
-#        name: API
-#  paths-to-match:
-#    - /**
+  #  default-consumes-media-type: application/json
+  #  default-produces-media-type: application/json
+  #  api-docs:
+  #    enabled: true
+  #    path: /v3/api-docs
+  #  swagger-ui:
+  #    enabled: true
+  #    path: /swagger-ui.html
+  #    config-url: /v3/api-docs/swagger-config
+  #    urls:
+  #      - url: /v3/api-docs
+  #        name: API
+  #  paths-to-match:
+  #    - /**
   api-docs:
     path: /search-service/v3/api-docs
   swagger-ui:
