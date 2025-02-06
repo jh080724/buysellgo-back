@@ -28,6 +28,7 @@ pipeline {
 //         K8S_REPO_URL = "https://github.com/BuySellGo/buysellgo-back.git"
         K8S_REPO_URL = "https://github.com/jh080724/buysellgo-back-k8s.git"
         K8S_REPO_CRED = "github-k8s-repo-token"
+        NEW_TAG = "1.0.6"
     }
 
     stages {
@@ -110,9 +111,9 @@ pipeline {
 
                             echo '{"credHelpers": {"${ECR_URL}": "ecr-login"}}' > ~/.docker/config.json
 
-                            docker build -t ${service}:${newTag} ${service}
-                            docker tag ${service}:${newTag} ${ECR_URL}/${service}:${newTag}
-                            docker push ${ECR_URL}/${service}:${newTag}
+                            docker build -t ${service}:${NEW_TAG} ${service}
+                            docker tag ${service}:${NEW_TAG} ${ECR_URL}/${service}:${NEW_TAG}
+                            docker push ${ECR_URL}/${service}:${NEW_TAG}
                             """
                         }
                     }
@@ -152,7 +153,7 @@ pipeline {
                                     cd /var/jenkins_home/workspace/buysellgo-back-k8s
                                     ls -a
                                     echo "Updating ${service} image tag in k8s repo...."
-                                    sed -i 's#^image: .*#image: ${ECR_URL}/${service}:${newTag}#' ./umbrella-chart/charts/${service}/values.yaml
+                                    sed -i 's#^image: .*#image: ${ECR_URL}/${service}:${NEW_TAG}#' ./umbrella-chart/charts/${service}/values.yaml
                                 """
                             }
 
