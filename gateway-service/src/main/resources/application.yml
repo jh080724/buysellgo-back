@@ -9,7 +9,7 @@ spring:
     gateway:
       globalcors:
         cors-configurations:
-          '[/**]': # 모든 경로에 대해 CORS 설정
+          "[/**]": # 모든 경로에 대해 CORS 설정
             allowed-origins:
               - "https://buysellgo.shop" # 필요시 추가
             #              - 'http://localhost:3000' # 허용할 도메인 추가
@@ -20,10 +20,14 @@ spring:
               - DELETE
               - OPTIONS
             allowed-headers:
-              - 'Content-Type' # 허용할 HTTP 헤더
-              - 'Authorization'
-              - 'X-Requested-With'
+              - "Content-Type" # 허용할 HTTP 헤더
+              - "Authorization"
+              - "X-Requested-With"
             allow-credentials: true # 자격 증명 허용 여부
+            exposed-headers:
+              - "Content-Type" # 허용할 HTTP 헤더
+              - "Authorization"
+              - "X-Requested-With"
       default-filters:
         - name: GlobalFilter
           args:
@@ -139,7 +143,7 @@ spring:
             - Method=GET
 
         - id: delivery-service
-          uri:  http://delivery-service.default.svc.cluster.local:8023
+          uri: http://delivery-service.default.svc.cluster.local:8023
           predicates:
             - Path=/delivery-service/**
           filters:
@@ -148,7 +152,7 @@ spring:
             - AuthorizationHeaderFilter
 
         - id: delivery-service
-          uri:  http://delivery-service.default.svc.cluster.local:8023
+          uri: http://delivery-service.default.svc.cluster.local:8023
           predicates:
             - Path=/delivery-service/actuator/**
           filters:
@@ -157,7 +161,7 @@ spring:
 
         # chat-service
         - id: chat-service-api-docs
-          uri:  http://chat-service.default.svc.cluster.local:8034
+          uri: http://chat-service.default.svc.cluster.local:8034
           predicates:
             - Path=/chat-service/v3/api-docs
             - Method=GET
